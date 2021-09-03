@@ -37,7 +37,7 @@ def isPalindrom(self, s: str) -> bool:
     # Replace non-lowercase and non-numeric values with ''
     s = re.sub('[^a-z0-9]', '', s) # (regular expression, target string, replacement character)
         
-    return s == s[::-1]
+    return s == s[::-1] 
 
 
 
