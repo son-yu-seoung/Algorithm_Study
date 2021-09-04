@@ -1,0 +1,46 @@
+[자주 사용하는 문자 클래스]
+
+[0-9] 또는 [a-zA-Z] 등은 무척 자주 사용하는 정규 표현식이다. 
+\d - 숫자와 매치, [0-9]와 동일한 표현식이다.
+\D - 숫자가 아닌 것과 매치, [^0-9]와 동일한 표현식이다.
+\s - whitespace 문자와 매치, [ \t\n\r\f\v]와 동일한 표현식이다. 맨 앞의 빈 칸은 공백문자(space)를 의미한다.
+\S - whitespace 문자가 아닌 것과 매치, [^ \t\n\r\f\v]와 동일한 표현식이다.
+\w - 문자+숫자(alphanumeric)와 매치, [a-zA-Z0-9_]와 동일한 표현식이다.
+\W - 문자+숫자(alphanumeric)가 아닌 문자와 매치, [^a-zA-Z0-9_]와 동일한 표현식이다.
+
+[문자열 바꾸기]
+sub 메서드를 사용하면 정규식과 매치되는 부분을 다른 문자로 쉽게 바꿀 수 있다.
+
+다음 예를 보자.
+
+>>> p = re.compile('(blue|white|red)')
+>>> p.sub('colour', 'blue socks and red shoes')
+'colour socks and colour shoes'
+: sub 메서드의 첫 번째 매개변수는 "바꿀 문자열(replacement)"이 되고, 두 번째 매개변수는 "대상 문자열"이 된다.
+
+ex) s = re.sub('[^a-z0-9]', '', s)
+--> s 문자열 안의 a-z, 0-9가 아닌 것들에 대해 ''로 치환한다. 
+
+[collections 라이브러리 다루기]
+- https://sulmasulma.github.io/algorithm/2020/05/12/collections.html
+<coollections.Counter>
+
+<collections.deque>
+deque는 앞과 뒤에서 데이터를 처리할 수 있는 양방향 자료형이다. 양방향이기 때문에 스택(Stack)처럼 써도 되고 큐(Queue)처럼 써도 된다.
+
+collections.deque 모듈은 deque 자료형을 생성하는 모듈이다.
+
+ex) a = [1, 2, 3, 4, 5]
+위 리스트를 2만큼 오른쪽으로 회전하여 다음과 같은 리스트를 만드시오.
+
+[4, 5, 1, 2, 3]
+
+>>> from collections import deque
+>>> a = [1, 2, 3, 4, 5]
+>>> q = deque(a)
+>>> q.rotate(2)
+>>> result = list(q)
+>>> result
+[4, 5, 1, 2, 3]
+
+
