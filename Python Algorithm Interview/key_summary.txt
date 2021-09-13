@@ -43,4 +43,7 @@ ex) a = [1, 2, 3, 4, 5]
 >>> result
 [4, 5, 1, 2, 3]
 
+<collections.defaultdict>
+defaultdict이란 딕셔너리와 거의 비슷하지만 key값이 없을 경우 미리 지정해 놓은 초기(default)값을 반환하는 dictionary이다. 
+
 
