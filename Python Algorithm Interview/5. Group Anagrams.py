@@ -14,32 +14,36 @@
 # Input : strs = ["a"]
 # Output : [["a"]]
 
-strs = ["mod","mop","pip","tug","hop","dog","met","zoe","axe","mug","fdr","for","fro","fdr","pap","ray","lop","nth","old","eva","ell","mci","wee","ind","but","all","her","lew","ken","awl","law","rim","zit","did","yam","not","ref","lao","gab","sax","cup","new","job","new","del","gap","win","pot","lam","mgm","yup","hon","khz","sop","has","era","ark"]
-from collections import Counter
-group = []
+# My solution -> Time Limit Exceeded
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        from collections import Counter
+        result = []
+        copy = strs[:]
+        for i in range(len(strs)):
+            group = []
+            for e in copy[:]:
+                if Counter(strs[i]) == Counter(e):
+                    group.append(e)
+                    copy.remove(e)
+            if group:
+                result.append(group)
+        return result
 
-for i in range(len(strs)):
-    temp = [strs[i]]
+# Optimal solution1
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        import collections
+        
+        # If you try to insert a key that does not exist, a KeyError is raised.
+        anagrams = collections.defaultdict(list)
 
-    for j in range(i+1, len(strs)):
-        if Counter(strs[i]) == Counter(strs[j]): # anagrams find
-            temp.append(strs[j])
-    
-    group.append(temp)
+        for word in strs:
+            anagrams[''.join(sorted(word))].append(word)
 
-group.sort(key=lambda x: len(x), reverse=True)
-temp_idx = set()
+        return list(anagrams.values())
 
-for i in range(len(group)): # overlap index collect
-    for j in range(i+1, len(group)):
-        for z in range(len(group[j])):
-            if group[j][z] in group[i]:
-                temp_idx.add(j)
 
-temp_idx = list(temp_idx) # set -> list & sort() for correct delete
-temp_idx.sort()
 
-for i, value in enumerate(temp_idx):
-    del group[value-i]
+        
 
-return group
