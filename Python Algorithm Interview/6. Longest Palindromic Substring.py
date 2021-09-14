@@ -22,4 +22,4 @@ s = 'abcde'
 for i in range(len(s), 0, -1): 
     for j in range(0, len(s) - i + 1):
         if s[j:j+i] == s[j:j+i][::-1]: # s[0:5:1] == s[4:-1:-1]
-            print('t',s[j:j+i])
+            print('t',s[j:j+i]) 
