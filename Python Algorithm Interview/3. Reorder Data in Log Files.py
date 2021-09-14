@@ -37,7 +37,7 @@ class Solution:
             if ord(char) < 58:
                 digit_logs.append(logs[i])
             else:
-                letter_logs.append(logs[i])
+                letter_logs.append(logs[i]) 
 
         for log_i in range(len(letter_logs)): # buble sort, more study another sort algorithm
             for log_j in range(log_i+1, len(letter_logs)):
